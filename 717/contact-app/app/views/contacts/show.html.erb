@@ -1,8 +1,9 @@
-<h1><%= @contact.first %></h1>
+<h1><%= @contact.full_name %></h1>
 
-<p><%= @contact.first %> <%= @contact.last %></p>
-<p><%= @contact.email %></p>
+<p>Name: <%= @contact.full_name%></p>
+<p>Email: <%= @contact.email %></p>
 
+<p>Last Update: <%= @contact.friendly_update %></p>
 
 <p><%= link_to "Return to Main Page", "/contacts" %></p>
 <p><%= link_to "Edit Contact", "/contacts/#{@contact.id}/edit"%></p>
