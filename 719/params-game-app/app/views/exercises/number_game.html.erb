@@ -1,0 +1,8 @@
+<h1>Guess a number!</h1>
+<%= form_tag("/number_game", method: "post") do %>
+  <%= label_tag(:number, "Enter a number") %>
+  <%= text_field_tag(:number) %>
+  <%= submit_tag("Guess!") %>
+<% end %>
+
+<h2><%= @message %></h2>

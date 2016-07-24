@@ -1,0 +1,9 @@
+<h1><%= @contact.first %></h1>
+
+<p><%= @contact.first %> <%= @contact.last %></p>
+<p><%= @contact.email %></p>
+
+
+<p><%= link_to "Return to Main Page", "/contacts" %></p>
+<p><%= link_to "Edit Contact", "/contacts/#{@contact.id}/edit"%></p>
+<p><%= link_to "Delete Contact", "/contacts/#{@contact.id}", method: :delete %></p>

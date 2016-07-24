@@ -1,0 +1,13 @@
+<h1>Edit Contact</h1>
+<%= form_tag("/contacts/#{@contact.id}", method: :patch) do %>
+<p> <%= label_tag(:first, "First Name:") %>
+  <%= text_field_tag(:first) %></p>
+
+<p> <%= label_tag(:last, "Last Name:") %>
+  <%= text_field_tag(:last) %></p>
+
+  <p><%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %></p>
+
+  <div><%= submit_tag("Edit Contact") %></div>
+<% end %>
