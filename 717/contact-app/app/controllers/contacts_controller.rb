@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   def index
-    @all_contacts = Contact.all
+    @contact = Contact.all
     render "index.html.erb"
   end
 
