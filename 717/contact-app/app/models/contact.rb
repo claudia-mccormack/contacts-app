@@ -5,10 +5,10 @@ class Contact < ActiveRecord::Base
   end
 
   def full_name
-    "#{first} #{last}"
+    "#{first} #{middle} #{last}"
   end
 
   def family_name
-    "#{last} #{first}"
+    "#{last} #{first} #{middle}"
   end
 end

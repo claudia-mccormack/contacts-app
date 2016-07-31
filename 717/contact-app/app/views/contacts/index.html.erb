@@ -1,5 +1,13 @@
-<h1>All Contacts</h1>
 
+<% if !current_user %>
+<h2>Please <%= link_to "login", '/login' %> or <%= link_to "sign up", '/signup' %> to store or view your contacts.</h2>
+<% end %>
+
+
+<% if current_user %>
+<h1>All Contacts</h1>
 <% @contact.each do |contact|%>
 <p><%= link_to contact.full_name, "/contacts/#{contact.id}" %></p>
+<% end %>
+<p><%= link_to 'Log Out', '/logout', method: 'delete' %></p>
 <% end %>
