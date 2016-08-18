@@ -1,24 +1,24 @@
 <h1>Edit Contact</h1>
 <%= form_tag("/contacts/#{@contact.id}", method: :patch) do %>
 <p> <%= label_tag(:first, "First Name:") %>
-  <%= text_field_tag(:first) %></p>
+  <%= text_field_tag(:first, @contact.first) %></p>
 
 <p> <%= label_tag(:middle, "Middle Name:") %>
-  <%= text_field_tag(:middle) %></p>
+  <%= text_field_tag(:middle, @contact.middle) %></p>
 
 <p> <%= label_tag(:last, "Last Name:") %>
-  <%= text_field_tag(:last) %></p>
+  <%= text_field_tag(:last, @contact.last) %></p>
 
 <p><%= label_tag(:email, "Email:") %>
-  <%= text_field_tag(:email) %></p>
+  <%= text_field_tag(:email, @contact.email) %></p>
 
   <p>
     <%= label_tag(:address, "Address:") %>
-    <%= text_field_tag(:address) %>
+    <%= text_field_tag(:address, @contact.address) %>
   </p>
 
   <p><%= label_tag(:bio, "Bio:") %>
-    <%= text_field_tag(:bio) %></p>
+    <%= text_field_tag(:bio, @contact.bio) %></p>
 
   <div><%= submit_tag("Edit Contact") %></div>
 <% end %>

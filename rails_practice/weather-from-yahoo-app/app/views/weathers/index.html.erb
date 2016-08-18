@@ -1,0 +1,12 @@
+<h1>Weather in <%= @weather.location.city %>, <%= @weather.location.region %></h1>
+<h2>Current Temperature: <%= @weather.condition.temp %></h2>
+<h2>Current Weather: <%= @weather.condition.text %></h2>
+<img src="<%= @weather.image.url %>">
+
+<% @forecast.each do |forecast| %>
+<ul>
+  <li><%= forecast.day %>, <%= forecast.date %></li>
+  <li>High: <%= forecast.high %>, Low: <%= forecast.low %></li>
+  <li><%= forecast.text %> </li>
+</ul>
+<% end %>

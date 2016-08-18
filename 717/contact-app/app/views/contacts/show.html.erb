@@ -4,6 +4,9 @@
 <p>Email: <%= @contact.email %></p>
 <p>Bio: <%= @contact.bio %></p>
 
+<% @contact.groups.each do |group| %>
+<p><%= group.name %></p>
+<% end %>
 
 <p>Last Update: <%= @contact.friendly_update %></p>
 

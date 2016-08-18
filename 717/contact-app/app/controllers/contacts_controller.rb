@@ -1,11 +1,23 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @contact = Contact.all
-    render "index.html.erb"
+    @contact = current_user.contacts
+    if params[:group]
+      group = Group.find_by(name: params[:group])
+      @contact = group.contacts.where(user_id: current_user)
+    end
+  render "index.html.erb"
   end
 
   def show
     @contact = Contact.find_by(id: params[:id])
+    if current_user.contacts.include?(@contact)
+    else
+      flash[:warning] = "Sorry! That is not one of your contacts!"
+      redirect_to '/contacts'
+    end
+
     render "show.html.erb"
   end
 
@@ -15,17 +27,23 @@ class ContactsController < ApplicationController
 
   def create
     coordinates = Geocoder.coordinates(params[:address])
-    @contact = Contact.new(
+    @contact = Contact.create(
       first: params[:first],
       middle: params[:middle],
       last: params[:last],
       email: params[:email],
       bio: params[:bio],
-      latitude: coordinates[0],
-      longitude: coordinates[1],
+      latitude: nil,
+      longitude: nil,
     )
-    @contact.save
-    render "create.html.erb"
+
+    if @contact.valid?
+      flash[:success] = "Contact added successfully!"
+      redirect_to "/contacts"
+    else
+      flash[:danger] = @contact.errors.full_messages
+      render "new.html.erb"
+    end
   end
 
   def edit
@@ -43,7 +61,13 @@ class ContactsController < ApplicationController
     latitude: nil,
     longitude: nil,
     )
-    render "update.html.erb"
+    if @contact.valid?
+      flash[:success] = "Contact updated successfully!"
+      redirect_to "/contacts"
+    else
+      flash[:danger] = @contact.errors.full_messages
+      render "edit.html.erb"
+    end
   end
 
   def destroy
