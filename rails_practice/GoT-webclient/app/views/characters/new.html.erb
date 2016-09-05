@@ -1,0 +1,17 @@
+<h2>Play the Game of Thrones</h2>
+<%= form_tag("/characters", method: :post) do %>
+ <div>
+  <%= label_tag(:name, "Name") %>
+  <%= text_field_tag(:name) %>
+</div>
+<div>
+ <%= label_tag(:house, "House") %>
+ <%= text_field_tag(:house) %>
+</div>
+<div>
+  <%= label_tag(:city, "City") %>
+  <%= text_field_tag(:city) %>
+</div>
+
+<%= submit_tag("Win or Die")%>
+<% end %>

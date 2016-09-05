@@ -1,0 +1,15 @@
+<h2>To Do:</h2>
+<div ng-app="app">
+  <div ng-controller="tasksCtlr">
+      <ul>
+        <li ng-class="{task_done: task.done}" ng-click="toggleDone(task)" ng-repeat="task in tasks">{{ task.text }}
+        </li>
+      </ul>
+    <br>
+    Things to do: {{ numberNotDone() }}
+    <br>
+    Task: <input type="text" ng-model="newTask">
+    <button ng-click="addTask(newTask)">Add Task</button>
+    <button ng-click="deleteTasks()">Clear Completed</button>
+  </div>
+</div>

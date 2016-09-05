@@ -1,0 +1,11 @@
+<h1>Winter is Coming...</h1>
+
+<ul>
+  <% @characters.each do |character| %>
+    <li><%= character.name %></li>
+      <ul>
+        <li>House <%= character.house %></li>
+        <li>From <%= character.city %></li>
+      </ul>
+  <% end %>
+</ul>

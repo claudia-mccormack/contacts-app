@@ -1,0 +1,17 @@
+<h2>Fetch the Maester!</h2>
+<%= form_tag("/characters/#{@character['id']}", method: :patch) do %>
+ <div>
+  <%= label_tag(:name) %>
+  <%= text_field_tag(:name, @character["name"]) %>
+</div>
+<div>
+ <%= label_tag(:house) %>
+ <%= text_field_tag(:house, @character["house"]) %>
+</div>
+<div>
+  <%= label_tag(:city) %>
+  <%= text_field_tag(:city, @character["city"]) %>
+</div>
+
+<%= submit_tag("Send a Raven")%>
+<% end %>
